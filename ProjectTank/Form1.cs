@@ -73,7 +73,7 @@ namespace ProjectTank
             Invalidate();
             if (gameStatus == GameStatus.start)
             {
-                thread1 = new Thread(() =>
+                new Thread(() =>
                 {
                     if (!warTank1.dead)
                         warTank1.ControlWar();
@@ -83,8 +83,7 @@ namespace ProjectTank
                         warTank3.ControlWar();
                     if (!warTank4.dead)
                         warTank4.ControlWar();
-                });
-                thread1.Start();
+                }).Start();
 
                 textBox1.Text = Convert.ToString(playerTank.kills);
             }
@@ -133,7 +132,7 @@ namespace ProjectTank
         private void Update2(object sender, EventArgs e)
         {
             Kill();
-            if (warTank1.health == 0 && warTank2.health == 0 && warTank3.health == 0 && warTank4.health == 0)
+            if (warTank1.dead && warTank2.dead && warTank3.dead && warTank4.dead)
                 gameStatus = GameStatus.win;
             if (playerTank.health == 0)
                 gameStatus = GameStatus.gameover;
