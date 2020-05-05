@@ -134,7 +134,7 @@ namespace ProjectTank
             Kill();
             if (warTank1.dead && warTank2.dead && warTank3.dead && warTank4.dead)
                 gameStatus = GameStatus.win;
-            if (playerTank.health == 0)
+            if (playerTank.dead)
                 gameStatus = GameStatus.gameover;
         }
 
